@@ -1,14 +1,17 @@
-const path = require('path');
-const assets = path.resolve(__dirname, '../', './public');
+/* eslint-disable import/no-extraneous-dependencies */
+import { WebpackConfiguration } from 'webpack-dev-server';
 
-module.exports = {
-  target: "web",
+import { PATHS } from './common/constants';
+
+const devServerConfig: WebpackConfiguration = {
+  target: 'web',
   devServer: {
     hot: true,
+    open: true,
     historyApiFallback: {
       // provide index.html instead of 404:not found error (for SPA app)
       rewrites: [
-        { from: /favicon.ico/, to: "public/favicon.ico" }, // provide favicon
+        { from: /favicon.ico/, to: 'public/favicon.ico' }, // provide favicon
       ],
     }, // it enables HTML5 mode: https://developer.mozilla.org/en-US/docs/Web/API/History
     devMiddleware: {
@@ -17,9 +20,8 @@ module.exports = {
         modules: false,
       },
     },
-    static: {
-      directory: assets, // folder with static content
-      watch: true, // enable hot-reload by changes in contentBase folder
-    },
+    static: PATHS.output,
   },
 };
+
+export default devServerConfig;

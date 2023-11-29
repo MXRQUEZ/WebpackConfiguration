@@ -4,7 +4,7 @@
     //intellisense config for VSCode
     "baseUrl": "./",
     "paths": {
-      "@/assets/*": ["public/assets/*"],
+      "@/assets/*": ["public/assets/*"]
     },
 
     "target": "ESNext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
@@ -24,10 +24,17 @@
     "outDir": "build",
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true
+  },
+
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   },
 
   "exclude": ["node_modules", "dist", "build", ".vscode"],
 
-  "include": ["src/**/*"]
+  "include": ["typings/*.d.ts", "**/*.ts", "**/*.tsx"]
 }
