@@ -6,4 +6,5 @@ node_modules
 assets
 
 # Ignore configuration files
+/**/*.d.ts
 *.eslintrc.js

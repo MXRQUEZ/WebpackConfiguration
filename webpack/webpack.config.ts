@@ -3,17 +3,16 @@
 import { merge } from 'webpack-merge';
 import { Configuration } from 'webpack';
 
-import { WebpackArgv, Mode, WebpackEnvironmentVariables } from './types/env';
+import { ConfigFunc } from './types/env';
 
-export default (_: WebpackEnvironmentVariables, { mode }: WebpackArgv): Configuration => {
-  const modeMap: Record<Mode, 'dev' | 'prod'> = {
-    development: 'dev',
-    production: 'prod',
-  } as const;
+const config: ConfigFunc = (env, argv) => {
+  const { env: currentEnv } = env;
 
   const commonConfig: Configuration = require('./webpack.common');
 
-  const envConfig: Configuration = require(`./webpack.${modeMap[mode]}`);
+  const envConfig: ConfigFunc = require(`./webpack.${currentEnv}`);
 
-  return merge(commonConfig, envConfig);
+  return merge(commonConfig, envConfig(env, argv));
 };
+
+export default config

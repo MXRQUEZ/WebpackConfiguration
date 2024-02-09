@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { WebpackConfiguration } from 'webpack-dev-server';
 
-import { PATHS } from './common/constants';
+import { HOST, PATHS, PORT } from './common/constants';
 
 const devServerConfig: WebpackConfiguration = {
   target: 'web',
@@ -20,7 +20,15 @@ const devServerConfig: WebpackConfiguration = {
         modules: false,
       },
     },
-    static: PATHS.output,
+    port: PORT,
+    host: HOST,
+    static: {
+      watch: {
+        ignored: PATHS.output,
+        aggregateTimeout: 200,
+        poll: 1000,
+      },
+    },
   },
 };
 

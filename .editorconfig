@@ -11,7 +11,7 @@ end_of_line = lf
 
 [*.{js,ts}]
 quote_type = single
-max_line_length = 120
+max_line_length = 100
 indent_brace_style = BSD KNF
 continuation_indent_size = 2
 curly_bracket_next_line = false

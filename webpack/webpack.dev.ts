@@ -8,23 +8,29 @@ import ReactRefreshTypeScript from 'react-refresh-typescript';
 import devServerConfig from './webpack.server';
 import { RuleBuilder } from './builders/rule';
 import { PluginBuilder } from './builders/plugin';
+import { ConfigFunc } from './types/env';
+import { ENV_MODE_MAP } from './common/constants';
 
-const config: Configuration = {
-  mode: 'development',
-  devtool: 'eval-cheap-module-source-map',
-  plugins: [
-    PluginBuilder.createProcessEnvVariablesPlugin({ env: 'development' }),
-    new ReactRefreshWebpackPlugin(),
-  ],
-  module: {
-    rules: [
-      RuleBuilder.createBabelTsRule([ReactRefreshTypeScript()]),
-      RuleBuilder.createStylesRule(),
+const devConfig: ConfigFunc<'dev'> = ({ env }) => {
+  const envMode = ENV_MODE_MAP[env];
+
+  const config: Configuration = {
+    mode: envMode,
+    devtool: 'eval-cheap-module-source-map',
+    plugins: [
+      PluginBuilder.createProcessEnvVariablesPlugin({ env: envMode }),
+      new ReactRefreshWebpackPlugin(),
     ],
-  },
-};
+    module: {
+      rules: [
+        RuleBuilder.createBabelTsRule([ReactRefreshTypeScript()]),
+        RuleBuilder.createStylesRule(),
+      ],
+    },
+  };
 
-const devConfig: Configuration = merge<Configuration>(config, devServerConfig);
+  return merge<Configuration>(config, devServerConfig);
+};
 
 export default devConfig;
 
