@@ -1,0 +1,7 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+EXPOSE ${PORT}
+
+CMD [ -d "node_modules" ] && yarn start:dev || yarn install && yarn start:dev
