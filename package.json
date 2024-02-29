@@ -96,13 +96,20 @@
     "webpack-dev-server": "^4.9.2",
     "webpack-merge": "^5.10.0"
   },
-  "*.{js,jsx,ts,tsx}": [
-    "eslint --rule 'no-console: [\"error\", { \"allow\": [\"error\", \"info\"] }]' --fix",
-    "stylelint --fix",
-    "git add"
-  ],
-  "*.{css,scss}": [
-    "stylelint --fix",
-    "git add"
-  ]
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --rule 'no-console: [\"error\", { \"allow\": [\"error\", \"info\"] }]' --fix",
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
