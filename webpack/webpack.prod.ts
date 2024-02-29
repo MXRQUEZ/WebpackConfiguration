@@ -1,4 +1,3 @@
-/* eslint-disable import/no-import-module-exports */
 /* eslint-disable import/no-extraneous-dependencies */
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import CompressionPlugin from 'compression-webpack-plugin';
@@ -109,6 +108,3 @@ const prodConfig: ConfigFunc<'prod'> = ({ env }, { mode }) => {
 };
 
 export default prodConfig;
-
-// this is needed for require imports to work
-module.exports = prodConfig;

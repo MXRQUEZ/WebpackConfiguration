@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable import/no-extraneous-dependencies */
 import { SourceFile, TransformerFactory } from 'typescript';
 

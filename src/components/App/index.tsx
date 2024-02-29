@@ -1,13 +1,13 @@
 import { memo } from 'react';
 
-import classes from './styles.module.css';
+import classes from './styles.module.scss';
 
 const App = (): JSX.Element => {
   console.error('test');
 
   return (
     <div className={classes.main}>
-      <h1>{__ENV__}</h1>
+      <h1>Test</h1>
     </div>
   );
 };

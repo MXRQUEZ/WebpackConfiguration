@@ -1,0 +1,12 @@
+{
+  "__comment__": "Remove customSyntax if you are not using styled-components",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-clean-order"
+  ],
+  "customSyntax": "postcss-styled-syntax",
+  "rules": {
+    "no-duplicate-selectors": true,
+    "string-quotes": "single"
+  }
+}

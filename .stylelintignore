@@ -21,6 +21,8 @@ assets
 *.svg
 *.jpg
 *.jpeg
+*.json
+*.d.ts
 
 # Ignore configuration files
 *.eslintrc.js

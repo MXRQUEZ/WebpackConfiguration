@@ -1,4 +1,3 @@
-/* eslint-disable import/no-import-module-exports */
 /* eslint-disable import/no-extraneous-dependencies */
 import { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
@@ -33,6 +32,3 @@ const devConfig: ConfigFunc<'dev'> = ({ env }) => {
 };
 
 export default devConfig;
-
-// this is needed for require imports to work
-module.exports = devConfig;

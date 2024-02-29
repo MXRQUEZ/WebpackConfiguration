@@ -1,10 +1,30 @@
+# Runtime data
+pids
+*.pid
+*.seed
+
 # Ignore artifacts:
 build
 coverage
 dist
 node_modules
 assets
+*.lock
+*.log
+
+# Ignore files
+*.mp4
+*.mp3
+*.webm
+*.webp
+*.png
+*.svg
+*.jpg
+*.jpeg
 
 # Ignore configuration files
-/**/*.d.ts
 *.eslintrc.js
+*.config.js
+*.config.json
+.*
+

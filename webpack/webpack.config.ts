@@ -1,18 +1,16 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 import { merge } from 'webpack-merge';
-import { Configuration } from 'webpack';
 
+import devConfig from './webpack.dev';
+import prodConfig from './webpack.prod';
 import { ConfigFunc } from './types/env';
+import commonConfig from './webpack.common';
 
 const config: ConfigFunc = (env, argv) => {
   const { env: currentEnv } = env;
 
-  const commonConfig: Configuration = require('./webpack.common');
-
-  const envConfig: ConfigFunc = require(`./webpack.${currentEnv}`);
+  const envConfig = (currentEnv === 'dev' ? devConfig : prodConfig) as ConfigFunc;
 
   return merge(commonConfig, envConfig(env, argv));
 };
 
-export default config
+export default config;
