@@ -1,4 +1,3 @@
-/* eslint-disable import/no-import-module-exports */
 /* eslint-disable import/no-extraneous-dependencies */
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -87,7 +86,7 @@ const commonConfig: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(PATHS.public, 'index.html'),
+      template: path.resolve(__dirname, '..', 'public', 'index.html'),
     }),
     new ProgressPlugin((percentage, message, ...args) => {
       console.info(percentage, message, ...args);
@@ -96,6 +95,3 @@ const commonConfig: Configuration = {
 };
 
 export default commonConfig;
-
-// this is needed for require imports to work
-module.exports = commonConfig;
