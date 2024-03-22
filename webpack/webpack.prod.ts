@@ -54,20 +54,20 @@ const prodConfig: ConfigFunc<'prod'> = ({ env }, { mode }) => {
       splitChunks: {
         chunks: 'async',
         minSize: 25600,
-        maxSize: 512000,
         minRemainingSize: 0,
         minChunks: 1,
         maxAsyncRequests: 30,
         maxInitialRequests: 30,
-        enforceSizeThreshold: 51200,
         cacheGroups: {
           defaultVendors: {
+            chunks: 'all',
             name: 'node-vendors',
             test: /[\\/]node_modules[\\/]/,
             priority: -10,
             reuseExistingChunk: true,
           },
           default: {
+            chunks: 'async',
             minChunks: 2,
             priority: -20,
             reuseExistingChunk: true,
